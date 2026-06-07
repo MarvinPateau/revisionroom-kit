@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide Photo Scan — numérisez vos photos souvenirs (PDF printable)</title>
+<meta name="description" content="Un guide pratique imprimable pour numériser vos tirages papier : résolution, format, organisation, backup. 7€. Livraison instantanée.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--bg:#f8f6f2;--paper:#fffcf8;--ink:#1a1a1a;--ink-75:#666;--ink-50:#999;--line:#ddd;--accent:#2d7d46;--accent-hover:#236635;--accent-light:#eaf5ee;--shadow:0 2px 8px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.08);--radius:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+.wrap{width:min(720px,calc(100% - 32px));margin:auto}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.mark{font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--ink-75)}
+.mark strong{color:var(--ink)}
+.nav a{font-size:14px;color:var(--ink-75);font-weight:500;transition:color .15s}
+.nav a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{background:linear-gradient(170deg, var(--paper) 0%, var(--bg) 100%);border-bottom:1px solid var(--line);padding:60px 0 40px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);border-radius:99px;padding:5px 14px;font-size:13px;font-weight:700;margin-bottom:16px}
+h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 10px}
+.hero-deck{font-size:17px;color:var(--ink-75);max-width:540px;margin:0 auto 24px;line-height:1.5}
+
+/* PREVIEW */
+.preview{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin:0 auto 28px;max-width:580px;text-align:left;box-shadow:var(--shadow)}
+.preview h3{font-size:15px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.preview ul{margin:0;padding:0;list-style:none}
+.preview li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-75);display:flex;align-items:center;gap:10px}
+.preview li:last-child{border:none}
+.preview li .emoji{font-size:18px;width:24px;text-align:center}
+
+/* PRICE */
+.price-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:36px 28px;text-align:center;max-width:420px;margin:0 auto 20px;box-shadow:var(--shadow)}
+.price{font-size:clamp(44px,7vw,64px);font-weight:800;letter-spacing:-.05em;line-height:1;margin:0 0 4px}
+.price-label{font-size:14px;color:var(--ink-75);margin-bottom:16px}
+.price-box .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 36px;border-radius:12px;font-weight:700;font-size:16px;transition:all .2s;background:var(--accent);color:#fff;box-shadow:0 2px 12px rgba(45,125,70,.25)}
+.price-box .btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 4px 20px rgba(45,125,70,.35)}
+.price-box small{display:block;margin-top:12px;font-size:13px;color:var(--ink-50)}
+
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.features div{background:var(--accent-light);padding:10px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:8px}
+.features div .check{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+
+/* HOW */
+.how{padding:48px 0;text-align:center}
+.how h2{font-size:22px;font-weight:700;margin:0 0 24px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:580px;margin:0 auto}
+.step{text-align:center}
+.step .num{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;margin:0 auto 10px}
+.step h3{font-size:14px;font-weight:700;margin:0 0 4px}
+.step p{font-size:13px;color:var(--ink-75);margin:0;line-height:1.4}
+
+/* FAQ */
+.faq{background:var(--paper);border-top:1px solid var(--line);padding:40px 0}
+.faq h2{font-size:20px;font-weight:700;text-align:center;margin:0 0 20px}
+details{max-width:540px;margin:0 auto;border-bottom:1px solid var(--line);padding:14px 0}
+summary{font-weight:600;cursor:pointer;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'+';font-size:18px;color:var(--ink-50);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{font-size:14px;color:var(--ink-75);margin:8px 0 0;line-height:1.5}
+
+footer{text-align:center;padding:24px 0;font-size:13px;color:var(--ink-50);border-top:1px solid var(--line)}
+
+@media(max-width:600px){
+  .features{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<nav class="wrap nav">
+  <div class="mark"><strong>Guide Photo Scan</strong> <span style="font-weight:400;color:var(--ink-50)">·</span> printable PDF</div>
+  <a href="https://www.paypal.me/M4RVlN/7">Acheter 7€</a>
+</nav>
+
+<section class="hero"><div class="wrap">
+  <div class="hero-badge">📄 2 pages A4 · prêt à imprimer</div>
+  <h1>Comment numériser vos photos souvenirs sans les abîmer</h1>
+  <p class="hero-deck">Le guide pratique qui vous fait gagner 3h de recherche et d'erreurs. Résolution, format, appli, rangement, backup — tout ce qu'il faut savoir en 2 pages.</p>
+  <div class="preview">
+    <h3>📋 Ce que vous trouvez dans le guide</h3>
+    <ul>
+      <li><span class="emoji">📟</span> Scanner plat vs téléphone — quel matériel pour quel résultat</li>
+      <li><span class="emoji">🔬</span> 300, 600 ou 1200 DPI ? Le tableau des bons réglages</li>
+      <li><span class="emoji">📁</span> La convention de nommage qui sauve (exemple arborescence)</li>
+      <li><span class="emoji">📲</span> 4 applis gratuites pour scanner au téléphone (comparatif)</li>
+      <li><span class="emoji">🎨</span> Retouches rapides : recadrage, balance des blancs, poussières</li>
+      <li><span class="emoji">💾</span> Règle 3-2-1 de sauvegarde — ne perdez jamais vos scans</li>
+      <li><span class="emoji">✅</span> Checklist imprimable à cocher en travaillant</li>
+    </ul>
+  </div>
+  <a href="https://www.paypal.me/M4RVlN/7" class="btn" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 36px;border-radius:12px;font-weight:700;font-size:16px;background:var(--accent);color:#fff;box-shadow:0 2px 12px rgba(45,125,70,.25)">Acheter le guide · 7€</a>
+  <p style="font-size:13px;color:var(--ink-50);margin-top:10px">🔒 PayPal Buyer Protection · Livraison instantanée</p>
+</div></section>
+
+<div class="wrap" style="padding:32px 0;text-align:center">
+  <div class="features">
+    <div><span class="check">✓</span> 2 pages A4 prêtes à imprimer</div>
+    <div><span class="check">✓</span> Aucun compte, aucun abonnement</div>
+    <div><span class="check">✓</span> Pas de blabla — que des instructions</div>
+    <div><span class="check">✓</span> Checklist à cocher incluse</div>
+    <div><span class="check">✓</span> Màj gratuite à vie</div>
+    <div><span class="check">✓</span> 7 jours satisfait ou remboursé</div>
+  </div>
+</div>
+
+<section class="how"><div class="wrap">
+  <h2>Comment ça marche</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Vous achetez</h3><p>7€ via PayPal. Mettez « Guide photo » dans le message PayPal.</p></div>
+    <div class="step"><div class="num">2</div><h3>Je vous envoie</h3><p>Le PDF par email sous 24h — ou instantané si vous laissez votre email dans le message PayPal.</p></div>
+    <div class="step"><div class="num">3</div><h3>Vous imprimez</h3><p>Le guide en A4, vous cochez les cases, vous numérisez. Simple.</p></div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <details open><summary>J'ai déjà un scanner, est-ce que ce guide est pour moi ?</summary><p>Oui. La partie scanner occupe une section, mais le cœur du guide c'est l'organisation : comment nommer, classer, sauvegarder. C'est ça qui prend du temps et que personne ne vous explique.</p></details>
+  <details><summary>Je ne peux pas juste regarder un tuto YouTube gratuit ?</summary><p>Vous pouvez. Mais un tuto YouTube = 20 min de vidéo pour 2 infos utiles, pas de checklist, pas de tableau comparatif, pas de règle de nommage écrite noir sur blanc. Le guide c'est 5 min de lecture, 2h de gagnées.</p></details>
+  <details><summary>Comment je reçois le guide après paiement ?</summary><p>Ajoutez votre email dans le message PayPal (« Guide photo — [votre email] »). Je vous envoie le PDF sous 24h. Sans email, ouvrez une Issue sur GitHub (lien en bas) et je vous le livre.</p></details>
+  <details><summary>Je peux être remboursé si le guide ne me plaît pas ?</summary><p>Oui. 7 jours. Ouvrez une Issue GitHub, je rembourse intégralement. Pas de questions.</p></details>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <strong>Guide Photo Scan</strong> · par Marvin<br>
+    7€ · Livraison instantanée · <a href="https://github.com/MarvinPateau/revisionroom-kit/issues/new" style="text-decoration:underline">Une question ? Ouvrir une Issue</a>
+  </div>
+</footer>
+
+</body>
+</html>
