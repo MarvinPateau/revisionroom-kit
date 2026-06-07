@@ -1,148 +1,195 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RevisionRoom — live dashboard demo</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..850&display=swap" rel="stylesheet">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RevisionRoom — product demo & interactive showcase</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..850&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box}
-:root{--bg:#f4f0e7;--paper:#fffcf5;--ink:#16130f;--ink-75:#5c5547;--ink-50:#a09786;--line:#e2d7c4;--accent:#c1512a;--green:#1f6a46;--blue:#003057;--red:#b33a2a;--gold:#b8862d;--radius:20px}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-.shell{width:min(1200px,calc(100% - 32px));margin:0 auto 48px}
-.banner{background:var(--ink);color:rgba(255,255,255,.65);padding:14px 0;text-align:center;font-size:13px;font-weight:500;line-height:1.4}
-.banner a{color:#ffd7ba;text-decoration:underline;text-underline-offset:3px}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0 16px}
+:root{--bg:#efebe2;--paper:#fffcf5;--ink:#16130f;--ink-75:#5c5547;--ink-50:#a09786;--line:#dcd1bc;--accent:#bf4f29;--green:#1b6a45;--blue:#003c66;--radius:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+
+/* banner */
+.top-banner{background:var(--ink);color:rgba(255,255,255,.6);padding:12px 0;text-align:center;font-size:13px}
+.top-banner a{color:#ffc29e;text-decoration:underline;text-underline-offset:3px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0 14px}
 .brand{font-size:18px;font-weight:750;letter-spacing:-.02em}
-.demo-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:700;border-radius:20px;padding:4px 12px;text-transform:uppercase;letter-spacing:.08em}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink-75);font-weight:500;text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff;font-size:13px;font-weight:650;border-radius:20px;padding:6px 16px}
 
-.grid{display:grid;grid-template-columns:1fr 300px;gap:24px;margin-top:8px}
+/* hero */
+.hero{background:linear-gradient(168deg,#fffcf5 0%,var(--bg) 100%);padding:56px 0 0;border-bottom:1px solid var(--line)}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+.hero-text{padding-bottom:48px}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(32px,5vw,54px);font-weight:800;line-height:.92;letter-spacing:-.05em;margin:0 0 12px}
+.hero-p{font-size:17px;color:var(--ink-75);max-width:460px;margin:0 0 22px;line-height:1.4}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;transition:all .12s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{opacity:.86;transform:translateY(-1px)}
+.btn-secondary{border:1.5px solid var(--line);color:var(--ink);background:var(--paper)}
+.btn-secondary:hover{border-color:var(--ink-75)}
 
-/* main dashboard card */
-.dash{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.dash-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 0}
-.dash-header h1{font-size:20px;font-weight:750;margin:0;letter-spacing:-.02em}
-.dash-header .date{font-size:13px;color:var(--ink-50)}
-.dash-tabs{display:flex;gap:20px;padding:16px 24px 0;border-bottom:1px solid var(--line)}
-.dash-tabs span{font-size:13px;font-weight:600;color:var(--ink-50);padding-bottom:12px;cursor:default;position:relative}
-.dash-tabs span.active{color:var(--ink)}
-.dash-tabs span.active::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--ink);border-radius:2px}
+/* dark product card */
+.product-card{background:#171410;border-radius:20px 20px 0 0;padding:28px 22px 18px;box-shadow:0 40px 80px -20px rgba(0,0,0,.3)}
+.tabs{display:flex;gap:18px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px}
+.tabs span{font-size:12px;color:rgba(255,255,255,.3);font-weight:600;cursor:default;padding-bottom:8px;position:relative}
+.tabs span.active{color:#fff}.tabs span.active::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:#fff;border-radius:2px}
+.grid-row{display:grid;grid-template-columns:1.4fr .7fr .6fr .6fr;gap:8px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;align-items:center}
+.grid-row:last-child{border:none}
+.grid-row .proj{color:#fff;font-weight:600}
+.pill{font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;display:inline-block;text-align:center}
+.pill.highlight{background:rgba(245,189,79,.12);color:#f5bd4f}
+.pill.done{background:rgba(97,196,84,.12);color:#61c454}
+.pill.edit{background:rgba(112,168,255,.12);color:#70a8ff}
+.pill.warn{background:rgba(237,106,94,.12);color:#ed6a5e}
+.meta{color:rgba(255,255,255,.3);font-size:12px}
+.branded-badge{text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:rgba(255,255,255,.2)}
 
-table{width:100%;border-collapse:collapse;font-size:14px}
-td,th{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
-th{font-size:11px;font-weight:700;color:var(--ink-50);text-transform:uppercase;letter-spacing:.08em}
-tr:last-child td{border-bottom:none}
+/* what you see — what you edit */
+.compare{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:48px 0}
+.compare-header{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.compare-header span{padding:14px 20px;font-size:13px;font-weight:700;text-align:center}
+.compare-header span:first-child{background:var(--bg);border-right:1px solid var(--line);color:var(--ink-75)}
+.comp-col{display:grid;grid-template-columns:1fr 1fr}
+.comp-col > div{padding:20px;font-size:13px;line-height:1.5}
+.comp-col .code{background:#1a1713;color:#e8ddd0;font-family:'SF Mono','Fira Code','Cascadia Code',monospace;font-size:12px;line-height:1.7;padding:20px;overflow-x:auto}
+.comp-col .code .highlight{color:#ffc29e}.comp-col .code .dim{color:rgba(255,255,255,.3)}
+.comp-col .result{background:var(--paper);display:flex;align-items:center;justify-content:center;padding:20px}
+.result-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg);padding:10px 16px;border-radius:99px;font-size:13px;font-weight:600}
+.result-badge .dot{width:10px;height:10px;border-radius:50%}
 
-.tag{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
-.tag.waiting{background:#f8edd7;color:var(--gold)}
-.tag.ready{background:#ddeee4;color:var(--green)}
-.tag.edit{background:#dde5f0;color:var(--blue)}
-.tag.blocked{background:#f4d9d3;color:var(--red)}
-.tag.done{background:#e8e3d9;color:var(--ink-50)}
+/* grid: what's in the kit */
+.showcase{padding:48px 0}
+.showcase h2{font-size:clamp(22px,3.5vw,32px);font-weight:800;letter-spacing:-.04em;margin:0 0 6px;text-align:center}
+.showcase .sub{text-align:center;color:var(--ink-75);font-size:16px;margin:0 0 36px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card .emoji{font-size:28px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:700;margin:0 0 4px}
+.card p{font-size:13px;color:var(--ink-75);margin:0;line-height:1.45}
+.card .fmt{font-size:11px;color:var(--ink-50);margin-top:8px}
 
-.client-info{display:flex;align-items:center;gap:10px}
-.initials{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
-.initials.c1{background:#c1512a}
-.initials.c2{background:#003057}
-.initials.c3{background:#1f6a46}
-
-.subsection{padding:20px 24px}
-.subsection h2{font-size:15px;font-weight:700;margin:0 0 10px}
-.revision-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
-.revision-item:last-child{border:none}
-.revision-item .change{color:var(--ink-75)}
-.revision-item .round{font-weight:600;font-size:12px}
-.round.c1{color:var(--accent)}.round.c2{color:var(--blue)}.round.c3{color:var(--red)}
-
-/* sidebar */
-.sidebar{display:grid;gap:16px;align-content:start}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
-.card h3{font-size:15px;font-weight:700;margin:0 0 10px}
-.card p,.card li{font-size:13px;color:var(--ink-75);line-height:1.5;margin:0 0 6px}
-.card ul{margin:6px 0;padding-left:16px}
-.card li{margin-bottom:4px}
-.btn{display:block;text-align:center;background:var(--ink);color:#fff;text-decoration:none;border-radius:12px;padding:12px;font-weight:700;font-size:14px;margin-top:12px;transition:opacity .15s}
-.btn:hover{opacity:.88}
-.btn-outline{border:1px solid var(--line);background:var(--paper);color:var(--ink);margin-top:8px}
-.btn-outline:hover{background:var(--bg)}
-.email-list{margin-top:6px}
-.email-item{padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;display:flex;justify-content:space-between}
+/* email templates snapshot */
+.email-preview{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-top:8px}
+.email-preview h3{font-size:15px;font-weight:700;margin:0 0 12px}
+.email-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
 .email-item:last-child{border:none}
-.email-num{color:var(--ink-50);font-weight:600}
+.email-item .num{color:var(--ink-50);font-weight:600;width:28px}
 
-.footer-note{text-align:center;margin-top:24px;font-size:13px;color:var(--ink-50);border-top:1px solid var(--line);padding-top:24px}
+/* how it works */
+.steps-section{padding:48px 0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps-section h2{text-align:center;font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.04em;margin:0 0 32px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{text-align:center}
+.step .num{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin:0 auto 12px}
+.step h3{font-size:16px;font-weight:700;margin:0 0 6px}
+.step p{font-size:13px;color:var(--ink-75);margin:0;line-height:1.45}
 
-@media(max-width:860px){
-  .grid{grid-template-columns:1fr}
-  .dash-header{flex-direction:column;align-items:flex-start;gap:4px}
-  td,th{padding:10px 12px;font-size:13px}
-  .subsection{padding:16px}
-  .banner{font-size:12px;padding:10px}
+/* cta box */
+.cta-section{padding:56px 0;text-align:center}
+.cta-section .price{font-size:clamp(44px,7vw,70px);font-weight:850;letter-spacing:-.06em;margin:4px 0}
+.cta-section .btn-primary{font-size:18px;padding:16px 40px;border-radius:16px}
+
+footer{color:var(--ink-50);font-size:13px;text-align:center;padding:28px 0;border-top:1px solid var(--line)}
+
+@media(max-width:800px){
+  .hero-inner{grid-template-columns:1fr;gap:24px}.hero-text{padding-bottom:0}
+  .comp-col{grid-template-columns:1fr}.comp-col .code{font-size:11px}
+  .steps{grid-template-columns:1fr;gap:28px}.branded-badge{display:none}
+  .nav-links a:not(.nav-cta){display:none}
+  .grid-row{grid-template-columns:1fr 1fr;gap:4px;font-size:12px}
 }
 </style></head><body>
 
-<div class="banner">This is a preview of the dashboard inside the kit. <a href="../index.html">Buy the kit → edit with your projects, brand and clients.</a></div>
-<div class="shell">
-<div class="nav"><div class="brand">Your Agency <span style="color:var(--ink-50);font-weight:400">/</span> RevisionRoom</div><div class="demo-badge">demo</div></div>
+<div class="top-banner">📦 This is a <strong>live preview</strong> of the RevisionRoom kit. <a href="index.html">Buy the kit → edit with your brand and projects.</a></div>
 
-<div class="grid">
-<main>
-<div class="dash">
-  <div class="dash-header">
-    <h1>Client projects</h1>
-    <span class="date">Week of June 7, 2026 · 8 active projects</span>
+<nav class="wrap nav">
+  <div class="brand">RevisionRoom <span style="color:var(--ink-50);font-weight:400">/</span> demo</div>
+  <div class="nav-links">
+    <a href="#kit">What's inside</a>
+    <a href="#how">How it works</a>
+    <a href="https://www.paypal.me/M4RVlN" class="nav-cta">Buy · €49</a>
   </div>
-  <div class="dash-tabs"><span class="active">All projects</span><span>Revisions</span><span>Assets</span></div>
-  <table>
-    <tr><th>Video</th><th>Status</th><th>Client</th><th>Editor</th><th>Due</th><th>Next action</th></tr>
-    <tr><td><strong>Brand launch reel</strong></td><td><span class="tag waiting">Awaiting notes</span></td><td><div class="client-info"><span class="initials c1">FM</span>FitMax</div></td><td>Sam</td><td>Today</td><td>Client reviewing V2</td></tr>
-    <tr><td><strong>Founder talking head</strong></td><td><span class="tag ready">V2 ready</span></td><td><div class="client-info"><span class="initials c2">BL</span>Bloom Labs</div></td><td>Mia</td><td>Jun 8</td><td>2 comments pending</td></tr>
-    <tr><td><strong>Podcast clip pack</strong></td><td><span class="tag edit">Editing</span></td><td><div class="client-info"><span class="initials c3">NW</span>Nova Wellness</div></td><td>Sam</td><td>Jun 9</td><td>Waiting for hook variants</td></tr>
-    <tr><td><strong>UGC ad batch (3)</strong></td><td><span class="tag blocked">Blocked</span></td><td><div class="client-info"><span class="initials c1">FM</span>FitMax</div></td><td>Mia</td><td>—</td><td>Client must confirm claims</td></tr>
-    <tr><td><strong>Testimonial short</strong></td><td><span class="tag done">Approved ✓</span></td><td><div class="client-info"><span class="initials c2">BL</span>Bloom Labs</div></td><td>Sam</td><td>Done</td><td>Schedule for Friday</td></tr>
-    <tr><td><strong>Product launch teaser</strong></td><td><span class="tag edit">Editing</span></td><td><div class="client-info"><span class="initials c3">NW</span>Nova Wellness</div></td><td>Mia</td><td>Jun 10</td><td>First cut due 5pm</td></tr>
-  </table>
+</nav>
 
-  <div class="subsection">
-    <h2>Recent revisions</h2>
-    <div class="revision-item"><span class="change">Brand launch reel — cut intro by 1.2s, swap caption style</span><span class="round c2">V1 → V2</span></div>
-    <div class="revision-item"><span class="change">Founder talking head — add CTA card at 12s mark</span><span class="round c1">V1 → V2</span></div>
-    <div class="revision-item"><span class="change">Podcast clip — add source link for guest quote</span><span class="round c1">V1 → V2</span></div>
-    <div class="revision-item"><span class="change">UGC ad batch — blocked, client claims unclear</span><span class="round c3">Waiting</span></div>
-  </div>
-</div>
-</main>
-
-<aside class="sidebar">
-  <div class="card">
-    <h3>This is what you buy</h3>
-    <p>This exact dashboard is one of the six files in the kit. After purchase, you:</p>
-    <ul>
-      <li>Replace the project names, clients and editors</li>
-      <li>Change the accent colour to your brand</li>
-      <li>Add your agency logo</li>
-      <li>Host it anywhere — Drive, Notion, GitHub, your own site</li>
-    </ul>
-    <a class="btn" href="https://www.paypal.me/M4RVlN">Buy the kit · €49</a>
-  </div>
-
-  <div class="card">
-    <h3>Also included</h3>
-    <p style="font-size:12px;font-weight:600;color:var(--ink-50);margin-bottom:8px">Files in the ZIP</p>
-    <div class="email-item"><span>Project tracker (CSV)</span><span class="email-num">✓</span></div>
-    <div class="email-item"><span>Client brief template</span><span class="email-num">✓</span></div>
-    <div class="email-item"><span>Revision rules</span><span class="email-num">✓</span></div>
-    <div class="email-item"><span>5 email templates</span><span class="email-num">✓</span></div>
-    <a class="btn btn-outline" href="https://github.com/MarvinPateau/revisionroom-kit">Browse the source</a>
-  </div>
-
-  <div class="card">
-    <h3>Email templates included</h3>
-    <div class="email-list">
-      <div class="email-item"><span>01. Brief request</span><span class="email-num">→ ask for footage, offer, examples</span></div>
-      <div class="email-item"><span>02. V1 delivery</span><span class="email-num">→ share link, set feedback deadline</span></div>
-      <div class="email-item"><span>03. Feedback chase</span><span class="email-num">→ nudge without being annoying</span></div>
-      <div class="email-item"><span>04. Final delivery</span><span class="email-num">→ wrap up, leave context</span></div>
-      <div class="email-item"><span>05. Next batch upsell</span><span class="email-num">→ turn one project into recurring</span></div>
+<section class="hero"><div class="wrap hero-inner">
+  <div class="hero-text">
+    <div class="label">What your clients see</div>
+    <h1>One page replaces the inbox chaos.</h1>
+    <p class="hero-p">Every project, every revision, every deadline — in one place the client opens and your team checks. No more forwarding screenshots of WhatsApp messages to the editor.</p>
+    <div class="actions">
+      <a href="#kit" class="btn btn-primary">Show me what's inside →</a>
+      <a href="https://www.paypal.me/M4RVlN" class="btn btn-secondary">Buy now · €49</a>
     </div>
   </div>
-</aside>
+  <div class="product-card">
+    <div class="tabs"><span class="active">Projects</span><span>Revisions</span><span>Assets</span></div>
+    <div class="grid-row"><span class="proj">Brand launch reel</span><span class="pill highlight">Awaiting notes</span><span>Sam</span><span class="meta">Due today</span></div>
+    <div class="grid-row"><span class="proj">Founder talking head</span><span class="pill done">V2 ready</span><span>Mia</span><span class="meta">Jun 8</span></div>
+    <div class="grid-row"><span class="proj">Podcast clips (3)</span><span class="pill edit">Editing</span><span>Sam</span><span class="meta">Jun 9</span></div>
+    <div class="grid-row"><span class="proj">UGC ad batch</span><span class="pill warn">Blocked</span><span>Mia</span><span class="meta">Claims needed</span></div>
+    <div class="grid-row"><span class="proj">Product teaser</span><span class="pill edit">Editing</span><span>Mia</span><span class="meta">Jun 10</span></div>
+    <div class="branded-badge">← After purchase: replace these with YOUR projects, clients and colours</div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <!-- Visual comparison: templating system -->
+  <div class="compare" id="edit">
+    <div class="compare-header">
+      <span>✏️ The file you edit (raw HTML)</span>
+      <span>🎯 What the client sees (branded result)</span>
+    </div>
+    <div class="comp-col">
+      <div class="code"><<span class="dim">span class="proj"</span>><span class="highlight">Brand launch reel</span><<span class="dim">/span</span>><br><<span class="dim">span class="pill highlight"</span>>Awaiting notes<<span class="dim">/span</span>><br><<span class="dim">span class="meta"</span>>Due today<<span class="dim">/span</span>><br><br><<span class="dim">!-- edit here --</span>><br><span class="highlight">Brand launch reel</span><br>↓ <span class="highlight">Replace</span> with your project<br>↓ "Agency name" in the title</div>
+      <div class="result">
+        <div class="result-badge"><span class="dot" style="background:#f5bd4f"></span> Awaiting notes · Due today</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="footer-note">RevisionRoom — buy once, brand in 10 minutes, use for every client. <a href="../index.html" style="color:var(--ink);text-decoration:underline">Back to the main page</a></div>
-</div>
+<section class="showcase wrap" id="kit">
+  <h2>The complete kit — six files</h2>
+  <p class="sub">Everything you need to stop losing client feedback across inboxes.</p>
+  <div class="cards">
+    <div class="card"><div class="emoji">📋</div><h3>Client dashboard</h3><p>HTML page. Edit once, share with every client. Shows each video, its status, revision notes and links.</p><div class="fmt">Format: HTML file</div></div>
+    <div class="card"><div class="emoji">📊</div><h3>Project tracker CSV</h3><p>One spreadsheet: client, video, editor, due date, status, asset links, next action. Your team checks this daily.</p><div class="fmt">Format: CSV</div></div>
+    <div class="card"><div class="emoji">✉️</div><h3>5 email templates</h3><p>Brief request → V1 delivery → feedback chase → final delivery → next batch upsell. Copy, paste, send.</p><div class="fmt">Format: Markdown (copy + paste)</div></div>
+    <div class="card"><div class="emoji">📝</div><h3>Client brief template</h3><p>Every client fills this before you start: hook direction, offer details, approval owner. Stops vague requests.</p><div class="fmt">Format: Markdown</div></div>
+    <div class="card"><div class="emoji">🚧</div><h3>Revision rules</h3><p>Share before work starts: "two rounds included, a new hook = a new video." Stops scope creep before it starts.</p><div class="fmt">Format: Markdown</div></div>
+    <div class="card"><div class="emoji">🎨</div><h3>Branded ZIP</h3><p>After payment, put your agency name in the PayPal note. I brand the dashboard with your colours and logo.</p><div class="fmt">Delivered within hours</div></div>
+  </div>
+
+  <div class="email-preview">
+    <h3>📬 The 5 email templates (ready to copy + send)</h3>
+    <div class="email-item"><span class="num">01</span><span><strong>Brief request</strong> — "Need these before we edit: footage link, offer/CTA, examples, approval owner."</span></div>
+    <div class="email-item"><span class="num">02</span><span><strong>V1 delivery</strong> — "V1 is ready here. Leave all notes in one pass by [time]."</span></div>
+    <div class="email-item"><span class="num">03</span><span><strong>Feedback chase</strong> — "Quick nudge. Need your notes by [time] or I'll treat V1 as approved."</span></div>
+    <div class="email-item"><span class="num">04</span><span><strong>Final delivery</strong> — "Final export here. Context notes saved in the portal for next batch."</span></div>
+    <div class="email-item"><span class="num">05</span><span><strong>Next batch upsell</strong> — "Ready for the next batch? Same turnaround, same quality."</span></div>
+  </div>
+</section>
+
+<section class="steps-section" id="how"><div class="wrap">
+  <h2>You are 10 minutes away from fixing client ops</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Buy the kit</h3><p>€49 via PayPal. Add your agency name in the note for a branded version, or leave it blank and edit the files yourself.</p></div>
+    <div class="step"><div class="num">2</div><h3>Edit the files</h3><p>Open the HTML in any text editor. Replace the project names, swap the colours, add your logo. 10 minutes for the first one, 2 minutes for each after that.</p></div>
+    <div class="step"><div class="num">3</div><h3>Share with clients</h3><p>Upload the page to Google Drive, Notion or GitHub Pages. Send the link. Clients stop emailing to ask where things are.</p></div>
+  </div>
+</div></section>
+
+<section class="cta-section wrap">
+  <div class="label" style="margin-bottom:8px">One payment · no subscription</div>
+  <div class="price">€49</div>
+  <p style="color:var(--ink-75);font-size:16px;max-width:460px;margin:6px auto 22px">Licensed for your entire agency. Unlimited clients. No monthly bill ever.</p>
+  <div class="actions" style="justify-content:center">
+    <a href="https://www.paypal.me/M4RVlN" class="btn btn-primary">Buy RevisionRoom · €49</a>
+    <a href="https://github.com/MarvinPateau/revisionroom-kit" class="btn btn-secondary" target="_blank">Browse the full source on GitHub →</a>
+  </div>
+  <p style="font-size:13px;color:var(--ink-50);margin-top:16px">Questions? <a href="contact.html" style="color:var(--ink)">Open an issue on GitHub</a> — I answer within 24h.</p>
+</section>
+
+<footer><div class="wrap">RevisionRoom · Built by Marvin / Nox · No recurring fees ever</div></footer>
 </body></html>
