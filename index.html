@@ -3,148 +3,313 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RevisionRoom — client delivery kit for short-form video editors</title>
-  <meta name="description" content="A ZIP of templates: client status page, revision tracker, brief templates and email scripts so your agency stops losing feedback across WhatsApp, email and DMs." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..850&display=swap" rel="stylesheet">
+  <title>RevisionRoom — a client operations system for short‑form video agencies</title>
+  <meta name="description" content="Stop losing money on revision chaos. A polished client dashboard, project tracker and message system for TikTok, Reels and Shorts editing teams. Setup in one afternoon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..850&display=swap" rel="stylesheet" />
   <style>
-    *{box-sizing:border-box}
-    :root{--bg:#f4f1eb;--paper:#fffbf5;--ink:#1a1713;--muted:#6b6354;--line:#ddd2bc;--accent:#2b4a5f;--accent-light:#dce7ed;--ok:#1f6a46;--warning:#c06f1c;--radius:20px}
-    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif}
-    .wrap{width:min(1040px,calc(100% - 32px));margin:auto}
-    .section{padding:60px 0}
+    *,*::before,*::after{box-sizing:border-box}
+    :root{--bg:#f6f2e9;--paper:#fffcf5;--ink:#16130f;--ink-75:#5c5547;--ink-50:#a09786;--line:#e2d7c4;--accent:#c1512a;--accent-light:#fceee8;--accent-dark:#8a361b;--green:#1f6a46;--blue:#003057;--shadow:0 20px 60px -12px rgba(22,19,15,.1),0 4px 12px -4px rgba(22,19,15,.04)}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+    a{text-decoration:none;color:inherit}
 
-    header{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
-    .nav{display:flex;justify-content:space-between;align-items:center}
-    .mark{font-weight:800;font-size:20px;letter-spacing:-.03em}
-    .price-badge{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px}
+    /* ─── Nav ─── */
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+    .mark{font-weight:750;font-size:17px;letter-spacing:-.02em}
+    .nav-actions{display:flex;gap:12px;align-items:center}
+    .nav-link{font-size:14px;color:var(--ink-75);font-weight:500;transition:color .15s}
+    .nav-link:hover{color:var(--ink)}
+    .nav-cta{background:var(--ink);color:#fff;font-size:13px;font-weight:650;border-radius:20px;padding:6px 16px;transition:opacity .15s}
+    .nav-cta:hover{opacity:.85}
 
-    .hero{background:var(--paper);padding:60px 0 50px}
-    h1{font-size:clamp(36px,6vw,64px);font-weight:800;line-height:.97;letter-spacing:-.05em;margin:0 0 12px}
-    .sub{font-size:clamp(17px,2.5vw,22px);line-height:1.3;max-width:700px;color:var(--muted);margin:0 0 6px}
-    .summary{font-size:15px;color:var(--muted);max-width:650px;margin:18px 0 28px;line-height:1.5}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 22px;border-radius:14px;text-decoration:none;font-weight:700;font-size:16px;transition:transform .12s,box-shadow .12s}
-    .btn:active{transform:scale(.97)}
-    .btn.primary{background:var(--ink);color:#fff;box-shadow:0 2px 8px rgba(26,23,19,.15)}
-    .btn.secondary{border:1.5px solid var(--line);background:var(--paper);color:var(--ink)}
+    /* ─── Hero ─── */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(168deg,#fffcf5 0%,#f6f2e9 30%,#ebe4d6 100%);border-bottom:1px solid var(--line);padding:80px 0 0}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+    .hero-text{padding-bottom:60px}
+    .hero-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    h1{font-size:clamp(38px,6vw,68px);font-weight:800;line-height:.92;letter-spacing:-.055em;margin:0 0 16px;max-width:620px}
+    .hero-p{font-size:18px;line-height:1.35;color:var(--ink-75);max-width:480px;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 28px;border-radius:14px;font-weight:700;font-size:16px;transition:all .15s;white-space:nowrap}
+    .btn-primary{background:var(--ink);color:#fff;box-shadow:0 2px 10px rgba(22,19,15,.12)}
+    .btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+    .btn-secondary{border:1.5px solid var(--line);color:var(--ink);background:var(--paper)}
+    .btn-secondary:hover{border-color:var(--ink-75)}
+    .hero-visual{position:relative;display:flex;align-items:flex-end;justify-content:flex-end}
 
-    .things{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin:28px 0 0}
-    .thing{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px}
-    .thing .num{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-    .thing h3{font-size:17px;margin:0 0 6px;font-weight:700}
-    .thing p{font-size:14px;color:var(--muted);margin:0;line-height:1.45}
+    /* polished product mockup card */
+    .mockup-card{width:100%;max-width:520px;background:#171410;border-radius:20px 20px 0 0;padding:28px 24px 20px;box-shadow:0 40px 80px -20px rgba(0,0,0,.3),0 8px 20px -8px rgba(0,0,0,.15)}
+    .mockup-dots{display:flex;gap:8px;margin-bottom:22px}
+    .mockup-dots span{width:10px;height:10px;border-radius:50%}
+    .mockup-dots span:nth-child(1){background:#ed6a5e}
+    .mockup-dots span:nth-child(2){background:#f5bd4f}
+    .mockup-dots span:nth-child(3){background:#61c454}
+    .mockup-tabs{display:flex;gap:20px;margin-bottom:18px}
+    .mockup-tabs span{font-size:12px;color:rgba(255,255,255,.35);font-weight:600;padding-bottom:6px;cursor:default}
+    .mockup-tabs span.active{color:#fff;border-bottom:2px solid #fff}
+    .mockup-row{display:grid;grid-template-columns:1.3fr .8fr .7fr .6fr;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
+    .mockup-row:last-child{border-bottom:none}
+    .mockup-row .name{color:#fff;font-weight:600}
+    .mockup-status{font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;display:inline-block;text-align:center}
+    .mockup-status.waiting{background:rgba(245,189,79,.15);color:#f5bd4f}
+    .mockup-status.ready{background:rgba(97,196,84,.15);color:#61c454}
+    .mockup-status.edit{background:rgba(112,168,255,.15);color:#70a8ff}
+    .mockup-status.blocked{background:rgba(237,106,94,.15);color:#ed6a5e}
+    .mockup-meta{color:rgba(255,255,255,.35);font-size:12px}
+    .mockup-cta{text-align:center;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.3)}
 
-    .demo-section{background:var(--accent-light);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin:32px 0 0}
-    .demo-section .bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-    .demo-section .barlabel{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
-    .table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.4}
-    .table td,.table th{padding:10px 8px;text-align:left;border-bottom:1px solid #c7d6e0}
-    .table th{font-size:12px;color:var(--muted);font-weight:600}
-    .tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600}
-    .tag.orange{background:#f2dac3;color:#8a3d14}
-    .tag.green{background:#d4ead9;color:#1a5c38}
-    .tag.blue{background:#d0dfed;color:#1f3c52}
-    .tag.red{background:#f0cfcd;color:#86221b}
-    .step{margin-top:24px;display:grid;grid-template-columns:40px 1fr;gap:8px}
-    .step .snum{font-size:20px;font-weight:800;color:var(--accent);line-height:1.2}
-    .step p{margin:0;font-size:14px;color:var(--muted);line-height:1.4}
+    /* ─── Story ─── */
+    .story{background:var(--paper);padding:72px 0;border-bottom:1px solid var(--line)}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .story h2{font-size:clamp(24px,3.5vw,42px);font-weight:800;letter-spacing:-.04em;margin:0 0 16px}
+    .story p{font-size:16px;line-height:1.5;color:var(--ink-75);margin:0 0 14px;max-width:480px}
+    .story-visual{background:var(--bg);border-radius:20px;padding:32px;border:1px solid var(--line);font-size:14px;line-height:1.45;color:var(--ink-75)}
+    .story-visual strong{color:var(--ink)}
+    .story-visual .head{font-weight:700;color:var(--accent);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+    .msg{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+    .msg:last-child{border:none}
+    .msg .sender{font-weight:600;font-size:13px}
+    .msg .txt{font-size:13px}
+    .msg.client .sender{color:var(--accent)}
+    .msg.editor .sender{color:var(--blue)}
+    .msg.client .txt{background:#fceee8;padding:4px 10px;border-radius:10px}
+    .msg.editor .txt{background:#e8edf3;padding:4px 10px;border-radius:10px}
 
-    h2{font-size:clamp(22px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:0 0 24px}
+    /* ─── What's inside ─── */
+    .inside{padding:72px 0;background:var(--bg)}
+    .inside h2{font-size:clamp(24px,3.5vw,36px);font-weight:800;letter-spacing:-.04em;margin:0 0 8px;text-align:center}
+    .inside .sub{text-align:center;color:var(--ink-75);font-size:17px;margin:0 0 44px}
+    .items{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .item{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px 24px;transition:box-shadow .2s}
+    .item:hover{box-shadow:var(--shadow)}
+    .item .icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;font-weight:700}
+    .item:nth-child(1) .icon{background:#fceee8;color:var(--accent)}
+    .item:nth-child(2) .icon{background:#e8edf3;color:var(--blue)}
+    .item:nth-child(3) .icon{background:#e6f2eb;color:var(--green)}
+    .item:nth-child(4) .icon{background:#f5f0e0;color:#8a7536}
+    .item h3{font-size:17px;font-weight:700;margin:0 0 6px}
+    .item p{font-size:14px;color:var(--ink-75);margin:0 0 4px;line-height:1.45}
+    .item .tag{font-size:12px;color:var(--ink-50)}
+    .item .tag strong{color:var(--ink)}
 
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-    .who{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;font-size:14px}
-    .who b{display:block;margin-bottom:3px}
-    .who p{margin:0;color:var(--muted)}
+    /* ─── How it works ─── */
+    .how{padding:72px 0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .how h2{font-size:clamp(24px,3.5vw,36px);font-weight:800;letter-spacing:-.04em;margin:0 0 40px;text-align:center}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .step{text-align:center;padding:0 12px}
+    .step-num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;margin:0 auto 16px}
+    .step h3{font-size:17px;font-weight:700;margin:0 0 8px}
+    .step p{font-size:14px;color:var(--ink-75);line-height:1.45;margin:0}
 
-    .pricing{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:40px;text-align:center}
-    .pricing h2{color:var(--paper)}
-    .pricing .price{font-size:clamp(48px,8vw,72px);font-weight:850;letter-spacing:-.06em;margin:6px 0}
-    .pricing .note{color:#bbb2a0;font-size:14px;max-width:500px;margin:6px auto 22px;line-height:1.45}
-    .pricing .btn{background:var(--paper);color:var(--ink)}
-    .pricing .btn:hover{background:#e8e0d1}
+    /* ─── Pricing ─── */
+    .pricing{padding:72px 0;background:var(--ink);color:#fff}
+    .pricing .wrap{text-align:center}
+    .pricing h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;margin:0 0 8px}
+    .pricing .sub{font-size:15px;color:rgba(255,255,255,.5);margin:0 auto 32px;max-width:520px;line-height:1.45}
+    .price-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px 32px;max-width:420px;margin:0 auto;backdrop-filter:blur(12px)}
+    .price-amount{font-size:clamp(48px,7vw,80px);font-weight:850;letter-spacing:-.06em;line-height:1;margin-bottom:6px}
+    .price-label{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:4px}
+    .price-detail{font-size:14px;color:rgba(255,255,255,.7);margin:0 0 24px;line-height:1.5}
+    .price-card .btn-primary{background:#fff;color:var(--ink);display:inline-flex;padding:14px 36px}
+    .price-card .btn-primary:hover{opacity:.92;transform:translateY(-1px)}
+    .price-note{font-size:13px;color:rgba(255,255,255,.35);margin-top:16px;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.4}
 
-    .faq-list{max-width:680px;margin:0 auto}
-    details{border-bottom:1px solid var(--line);padding:16px 0}
-    summary{font-weight:700;cursor:pointer;font-size:15px;padding:4px 0}
-    details p{font-size:14px;color:var(--muted);margin:8px 0 4px;line-height:1.45}
+    /* ─── FAQ ─── */
+    .faq{padding:72px 0;background:var(--paper)}
+    .faq h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.04em;margin:0 0 28px;text-align:center}
+    .faq-grid{max-width:680px;margin:0 auto;display:grid;gap:0}
+    details{background:var(--paper);border-bottom:1px solid var(--line);padding:18px 0}
+    summary{font-weight:600;cursor:pointer;font-size:15px;padding:2px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    summary::after{content:'+';font-size:18px;color:var(--ink-50);font-weight:400;transition:transform .2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{font-size:14px;color:var(--ink-75);margin:8px 0 0;line-height:1.5;max-width:580px}
 
-    footer{color:var(--muted);font-size:14px;padding:32px 0;border-top:1px solid var(--line)}
+    /* ─── Footer ─── */
+    footer{background:var(--bg);padding:32px 0 40px;color:var(--ink-50);font-size:13px;text-align:center;border-top:1px solid var(--line)}
 
-    @media(max-width:620px){
-      .things{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .demo-section{overflow-x:auto}
-      .nav .price-badge{display:none}
-      h1{font-size:34px}
-      .hero{padding:40px 0}
+    @media(max-width:820px){
+      .hero-inner{grid-template-columns:1fr;gap:32px}
+      .hero-text{padding-bottom:0}
+      .hero-visual{justify-content:center}
+      .mockup-card{max-width:100%;border-radius:16px}
+      .story-grid{grid-template-columns:1fr;gap:28px}
+      .items{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr;gap:32px}
+      .step{padding:0}
+      .mockup-row{grid-template-columns:1fr 1fr;gap:4px;font-size:12px}
+      .nav-actions .nav-link{display:none}
     }
   </style>
 </head>
 <body>
-  <header><div class="wrap nav">
-    <div class="mark">RevisionRoom</div>
-    <div class="price-badge">€49 · one payment, no subscription</div>
-  </div></header>
 
-  <section class="hero"><div class="wrap">
-    <h1>A kit that stops revision chaos for short-form editors.</h1>
-    <p class="sub">A ZIP of templates your agency edits once and uses for every client.</p>
-    <p class="summary"><strong>What it is:</strong> one client status page (HTML), one CSV tracker for all projects, one set of brief/revision/email templates — ready to brand and reuse. Not a SaaS. Not a login. A kit you customize.</p>
-    <div class="actions">
-      <a class="btn primary" href="https://www.paypal.me/M4RVlN">Buy the kit · €49</a>
-      <a class="btn secondary" href="demo/client-portal.html">See a demo</a>
+<nav class="wrap nav">
+  <div class="mark">RevisionRoom</div>
+  <div class="nav-actions">
+    <a href="#story" class="nav-link">Why</a>
+    <a href="#inside" class="nav-link">What's inside</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="demo/client-portal.html" class="nav-link">Demo</a>
+    <a href="https://www.paypal.me/M4RVlN" class="nav-cta">Buy now</a>
+  </div>
+</nav>
+
+<!-- ═══ Hero ═══ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="hero-label">Client ops for short‑form video agencies</div>
+      <h1>Your clients stop asking where things are. You stop hunting for where feedback went.</h1>
+      <p class="hero-p">A client dashboard that shows every project, revision and deadline in one place. Setup in an afternoon, branded for your agency, shared with every client.</p>
+      <div class="hero-actions">
+        <a href="https://www.paypal.me/M4RVlN" class="btn btn-primary">Buy RevisionRoom · €49</a>
+        <a href="demo/client-portal.html" class="btn btn-secondary">See the dashboard</a>
+      </div>
     </div>
-
-    <div class="things">
-      <div class="thing"><div class="num">01</div><h3>Client status page</h3><p>An HTML page showing each video, its status, revision notes and asset links. Brand it for your agency.</p></div>
-      <div class="thing"><div class="num">02</div><h3>Project tracker (CSV)</h3><p>A spreadsheet you share with your team: client, video, editor, due date, status, next action. Open in any tool.</p></div>
-      <div class="thing"><div class="num">03</div><h3>Brief &amp; revision templates</h3><p>Client-facing brief form, revision rules to set boundaries upfront, and email scripts for every step.</p></div>
-      <div class="thing"><div class="num">04</div><h3>Email/message sequence</h3><p>Five ready-to-send client messages: brief request → V1 delivery → feedback chase → final → upsell.</p></div>
+    <div class="hero-visual">
+      <div class="mockup-card">
+        <div class="mockup-dots"><span></span><span></span><span></span></div>
+        <div class="mockup-tabs">
+          <span class="active">Projects</span>
+          <span>Revisions</span>
+          <span>Assets</span>
+        </div>
+        <div class="mockup-row"><span class="name">Brand launch reel</span><span class="mockup-status waiting">Awaiting notes</span><span>Sam</span><span class="mockup-meta">Due today</span></div>
+        <div class="mockup-row"><span class="name">Founder talking head</span><span class="mockup-status ready">V2 ready</span><span>Mia</span><span class="mockup-meta">Jun 8</span></div>
+        <div class="mockup-row"><span class="name">Podcast clips (3)</span><span class="mockup-status edit">Editing</span><span>Sam</span><span class="mockup-meta">Jun 9</span></div>
+        <div class="mockup-row"><span class="name">UGC ad batch</span><span class="mockup-status blocked">Blocked</span><span>Mia</span><span class="mockup-meta">Needs claims</span></div>
+        <div class="mockup-cta">Buy the kit → edit this dashboard with your projects, colors and brand</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="demo-section">
-      <div class="bar"><span class="barlabel">Example: client status dashboard in the kit</span></div>
-      <table class="table">
-        <tr><th>Video</th><th>Status</th><th>Editor</th><th>Due</th><th>Notes</th></tr>
-        <tr><td><strong>Brand launch reel</strong></td><td><span class="tag orange">Awaiting notes</span></td><td>Sam</td><td>Today</td><td>Client reviewing V2</td></tr>
-        <tr><td><strong>Founder talking head</strong></td><td><span class="tag green">V2 ready</span></td><td>Mia</td><td>Jun 8</td><td>2 comments from client</td></tr>
-        <tr><td><strong>Podcast clip pack (3)</strong></td><td><span class="tag blue">Editing</span></td><td>Sam</td><td>Jun 9</td><td>Needs hook variants</td></tr>
-        <tr><td><strong>UGC ad batch</strong></td><td><span class="tag red">Blocked</span></td><td>Mia</td><td>—</td><td>Client must confirm claims</td></tr>
-      </table>
-      <div class="step"><span class="snum">1</span><p>You download the kit, replace the project names with your own, and upload to Drive or Notion or your own server.</p></div>
-      <div class="step"><span class="snum">2</span><p>Share the link with each client. They see exactly what is due, what is approved, and what assets they need to send.</p></div>
-      <div class="step"><span class="snum">3</span><p>Your editor checks the CSV tracker once a day instead of searching six inbox threads for the latest feedback.</p></div>
+<!-- ═══ Story ═══ -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <h2>One revision thread costs more than this kit.</h2>
+      <p><strong>Here is what happens every week:</strong> a client sends feedback in an email. Then a follow-up on WhatsApp. Then a Loom video. Then a comment on the Google Drive link. Your editor does not see the WhatsApp message. The revision goes through three rounds instead of one. You eat the extra time because tracking billable revisions is impossible across five inboxes.</p>
+      <p>RevisionRoom replaces that with one page the client opens and one CSV your team checks. The client sees what is due, what is approved and what needs their input. Your team sees the same information without digging through threads. That is it.</p>
     </div>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <h2>Who this is for</h2>
-    <div class="grid-3">
-      <div class="who"><b>Short-form editing agencies</b><p>You handle TikTok, Reels and Shorts for 5–30 clients. The file handoff and revision loop is your bottleneck.</p></div>
-      <div class="who"><b>Solo editors with multiple clients</b><p>Every client uses a different platform to send feedback. One page replaces the inbox search.</p></div>
-      <div class="who"><b>UGC / clipping agencies</b><p>High volume of quick-turn edits means zero room for miscommunication. This keeps everyone honest.</p></div>
+    <div class="story-visual">
+      <div class="head">A real Tuesday morning without it</div>
+      <div class="msg client"><span class="sender">Client</span><span class="txt">hey just looked at the V1, can we cut the intro shorter? maybe 2 seconds instead of 4</span></div>
+      <div class="msg editor"><span class="sender">Editor</span><span class="txt">sure thing, will send V2 by 4pm</span></div>
+      <div class="msg client"><span class="sender">Client</span><span class="txt">actually also can you swap the background track? and the caption font feels off</span></div>
+      <div class="msg editor"><span class="sender">Editor</span><span class="txt">noted — waiting on the music direction, which style?</span></div>
+      <div class="msg client"><span class="sender">Client</span><span class="txt">i sent a voice note on whatsapp about it</span></div>
+      <div class="msg editor"><span class="sender">Editor</span><span class="txt">sorry I don't have whatsapp on this device — can you write it here?</span></div>
+      <p style="margin-top:12px;font-size:13px;color:var(--ink-50);border-top:1px solid var(--line);padding-top:12px">This conversation actually happened. Three rounds for one timing tweak because the request started in one channel and finished in another.</p>
     </div>
-  </div></section>
+  </div>
+</section>
 
-  <section class="section"><div class="wrap pricing">
-    <h2>One payment. Forever yours.</h2>
-    <div class="price">€49</div>
-    <p class="note">You get a ZIP with the complete kit. Edit the HTML, change the colors, write your own project names — no subscription, no account, no login. After payment, put your agency name and site in the PayPal note and I will brand the files for you.</p>
-    <a class="btn" href="https://www.paypal.me/M4RVlN">Buy via PayPal</a>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <h2>Questions</h2>
-    <div class="faq-list">
-      <details><summary>What exactly do I get?</summary><p>A ZIP with: HTML client portal (edit and host anywhere), CSV project tracker, brief intake template, revision rules document, and five client email/message templates. All editable, ready to brand.</p></details>
-      <details><summary>Do I need a server or login?</summary><p>No. The kit is files. Upload the HTML to Google Drive, Dropbox, Notion, GitHub Pages, your own site — wherever you host files for clients.</p></details>
-      <details><summary>Can I rebrand it for my agency?</summary><p>Yes, that is the point. The HTML uses a clean CSS style. Swap the logo, colors, and company name. Takes about 10 minutes. If you put your agency name in the PayPal note, I will do it for you.</p></details>
-      <details><summary>What if I already use Trello / Notion / Airtable?</summary><p>Keep using them. This kit works alongside whatever tool you have. Some clients prefer a simple page over another dashboard login. Use it for those clients.</p></details>
-      <details><summary>No subscription? No monthly fee?</summary><p>Correct. €49 one time. No SaaS. No auto-renewal. No feature gates.</p></details>
+<!-- ═══ Inside ═══ -->
+<section class="inside" id="inside">
+  <div class="wrap">
+    <h2>Everything the kit includes</h2>
+    <p class="sub">Six files. Edit them once. Use them for every client.</p>
+    <div class="items">
+      <div class="item">
+        <div class="icon">P</div>
+        <h3>Client status dashboard</h3>
+        <p>A beautiful HTML page that shows each video, its status, revision notes and links. Brand it with your logo, colours and agency name. Host it on Google Drive, Notion, GitHub Pages or your own server.</p>
+        <span class="tag"><strong>Format:</strong> HTML file, fully editable</span>
+      </div>
+      <div class="item">
+        <div class="icon">T</div>
+        <h3>Project tracker</h3>
+        <p>A CSV spreadsheet your team uses internally: client, video, editor, due date, status, asset links and next action. One row per deliverable. Open in Excel, Google Sheets or Numbers.</p>
+        <span class="tag"><strong>Format:</strong> CSV, import anywhere</span>
+      </div>
+      <div class="item">
+        <div class="icon">B</div>
+        <h3>Client brief intake</h3>
+        <p>A structured brief template that every client fills before you start editing — hook direction, offer details, forbidden words, approval owner. Saves the first round of "sorry I forgot to mention".</p>
+        <span class="tag"><strong>Format:</strong> Markdown file, paste into any client message</span>
+      </div>
+      <div class="item">
+        <div class="icon">E</div>
+        <h3>5 client email templates</h3>
+        <p>Ready-to-copy messages for every touchpoint: brief request → V1 delivery → feedback chase → final delivery → next-batch upsell. Professional tone, zero fluff, easy to adapt.</p>
+        <span class="tag"><strong>Format:</strong> Markdown file, copy and send</span>
+      </div>
+      <div class="item">
+        <div class="icon">R</div>
+        <h3>Revision rules</h3>
+        <p>A one-page document you share with clients before work starts: "two rounds included, a new hook counts as a new video, collect all feedback in one pass." The rules that stop scope creep before it starts.</p>
+        <span class="tag"><strong>Format:</strong> Markdown file</span>
+      </div>
+      <div class="item">
+        <div class="icon">D</div>
+        <h3>Branded zip, delivered</h3>
+        <p>After payment, put your agency name in the PayPal note and I will brand the dashboard HTML with your colours, logo placeholder and company name. You get a production-ready zip within hours.</p>
+        <span class="tag"><strong>Format:</strong> ZIP file, delivered after PayPal</span>
+      </div>
     </div>
-  </div></section>
+  </div>
+</section>
 
-  <footer><div class="wrap">Built by Marvin / Nox. No fake metrics. You are buying a template kit, not a promise of revenue.</div></footer>
-</body></html>
+<!-- ═══ How it works ═══ -->
+<section class="how">
+  <div class="wrap">
+    <h2>Setup in an afternoon. No maintenance after that.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Buy and download</h3>
+        <p>Pay via PayPal — no subscription, no recurring bill. The kit is yours the moment you pay. If you want it branded, add your agency name in the PayPal note.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Edit and brand</h3>
+        <p>Open the HTML in any text editor. Replace the placeholder projects, change the colours, add your logo. Takes about 10 minutes the first time — two minutes for every client after that.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Share with clients</h3>
+        <p>Upload the dashboard page wherever your clients already go — Google Drive, Notion, your own website. Send them the link. They stop emailing you to ask where things are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Pricing ═══ -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <h2>€49. One payment. No subscription.</h2>
+    <p class="sub">No monthly bill. No feature gates. No "upgrade to unlock". You buy it once and use it for every client, every project, every year.</p>
+    <div class="price-card">
+      <div class="price-amount">€49</div>
+      <div class="price-label">one payment</div>
+      <p class="price-detail">Complete kit — dashboard, tracker, brief template, revision rules and email templates. Licensed for your entire agency, unlimited clients.</p>
+      <a href="https://www.paypal.me/M4RVlN" class="btn btn-primary">Buy now with PayPal</a>
+    </div>
+    <p class="price-note">After payment, put your agency name and website in the PayPal note. I will brand the dashboard with your colours and return a production-ready zip. If you prefer the raw files to edit yourself, just leave the note blank and they are yours immediately.</p>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="wrap">
+    <h2>Questions you probably have</h2>
+    <div class="faq-grid">
+      <details><summary>What exactly do I get when I pay?</summary><p>A ZIP file containing six editable documents: an HTML client dashboard, a CSV project tracker, a client brief template, revision rules, and five email templates. If you add your agency name in the PayPal note, the HTML will already be branded with your colours.</p></details>
+      <details><summary>Do I need a server or hosting?</summary><p>The dashboard is an HTML file. Upload it to Google Drive (it renders as a live page), Notion (embed via the HTML block), or GitHub Pages (free, instructions included). You do not need a server or a paid hosting plan.</p></details>
+      <details><summary>Can I try it before buying?</summary><p><a href="https://github.com/MarvinPateau/revisionroom-kit" style="text-decoration:underline">The GitHub repository is public</a> — you can browse every file, inspect the code and see exactly what you are buying. The kit you download after payment is the same files, optionally branded.</p></details>
+      <details><summary>What if I need help customising it?</summary><p>The kit is designed to be edited by anyone who can open a text file. If you get stuck, reply to your PayPal receipt email with your question — I will answer within 24 hours.</p></details>
+      <details><summary>Can I get a refund?</summary><p>The kit is a downloadable ZIP file. It either works or it does not. If the files are corrupted or unreadable, I fix it immediately. There is no trial period and no return policy on digital templates — that is why the full source is visible on GitHub before purchase.</p></details>
+      <details><summary>Can I use this for my agency with multiple editors?</summary><p>Yes. One purchase covers your entire agency and unlimited clients. The CSV tracker works for teams of any size. The client dashboard is a single file you can host privately or share per-client.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Built by Marvin / Nox · RevisionRoom is a client operations kit, not a SaaS platform · No recurring fees, ever</div>
+</footer>
+
+</body>
+</html>
