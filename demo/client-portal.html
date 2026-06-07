@@ -1,1 +1,82 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client portal demo</title><style>:root{--bg:#f6f1e8;--ink:#191713;--muted:#686154;--card:#fffaf2;--line:#ded2bc;--orange:#d95f35;--blue:#22384f;--green:#237153}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}.shell{width:min(1160px,calc(100% - 28px));margin:24px auto 56px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}.brand{font-size:24px;font-weight:850;letter-spacing:-.04em}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 340px;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}.hero{background:#15120e;color:#fff2df;border-radius:24px;padding:24px;margin-bottom:18px}.hero h1{font-size:34px;line-height:1;letter-spacing:-.04em;margin:0 0 8px}.kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.col h2{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.task{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}.task b{display:block}.badge{display:inline-flex;border-radius:999px;padding:4px 8px;background:#f2dfcf;color:#8a351c;font-size:12px;margin-top:8px}.green{background:#dcebdd;color:#1f653f}.blue{background:#dbe8f5;color:#243b53}.side{display:grid;gap:18px}.btn{display:block;text-align:center;background:#191713;color:white;text-decoration:none;border-radius:12px;padding:12px 14px;font-weight:800}.note{border-left:3px solid var(--orange);padding-left:12px}.table{width:100%;border-collapse:collapse}.table td,.table th{border-bottom:1px solid var(--line);padding:10px;text-align:left}.table th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}@media(max-width:860px){.grid,.kanban{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head><body><div class="shell"><div class="top"><div><div class="brand">Acme Shorts Studio</div><div class="muted">Client portal demo. Replace logo, colors and project names in 10 minutes.</div></div><a class="btn" href="../index.html">Back to kit</a></div><section class="hero"><h1>Client delivery room</h1><p>Everything the client needs to approve short-form videos without burying your editor in scattered feedback.</p></section><div class="grid"><main><div class="kanban"><section class="col"><h2>Needs brief</h2><div class="task"><b>UGC ad batch</b><span class="muted">Missing product claims and forbidden words.</span><span class="badge">client action</span></div><div class="task"><b>Founder reel</b><span class="muted">Need raw footage link and captions preference.</span><span class="badge">brief incomplete</span></div></section><section class="col"><h2>In edit</h2><div class="task"><b>Podcast clip pack</b><span class="muted">V1 due 18:00. Editor: Sam.</span><span class="badge blue">editing</span></div><div class="task"><b>Trend response</b><span class="muted">Hook variants being tested.</span><span class="badge blue">editing</span></div></section><section class="col"><h2>Approval</h2><div class="task"><b>Launch reel</b><span class="muted">V2 uploaded. Waiting on final note.</span><span class="badge green">ready</span></div><div class="task"><b>Testimonial short</b><span class="muted">Approved. Schedule for Friday.</span><span class="badge green">done</span></div></section></div><div class="card"><h2>Revision log</h2><table class="table"><tr><th>Video</th><th>Change</th><th>Status</th></tr><tr><td>Launch reel</td><td>Cut intro by 1.2s, swap caption style.</td><td>Done</td></tr><tr><td>Podcast clip</td><td>Add source link for quote.</td><td>Waiting</td></tr><tr><td>UGC batch</td><td>Client must confirm claims before edit.</td><td>Blocked</td></tr></table></div></main><aside class="side"><div class="card"><h2>Client rules</h2><p class="note">Two revision rounds are included. New hooks, new footage or a changed offer count as a new video, not a revision.</p></div><div class="card"><h2>Asset links</h2><p>Raw footage folder<br>Final exports folder<br>Brand guide<br>Caption examples</p></div><div class="card"><h2>Next client message</h2><p>"V2 is ready. Please leave all comments in one pass by 16:00 so we can export the final before end of day."</p></div></aside></div></div></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RevisionRoom demo — client status page template</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..850&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box}:root{--bg:#f0ece2;--ink:#1a1713;--muted:#6b6354;--card:#fffbf5;--line:#d5caba;--orange:#c06f1c;--blue:#1f3c52;--green:#1a5c38;--red:#86221b;--radius:18px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+.shell{width:min(1120px,calc(100% - 28px));margin:0 auto 56px}
+.banner{background:var(--ink);color:#fff2df;padding:16px 0;text-align:center;font-size:14px;font-weight:600}
+.banner a{color:#ffd7ba}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:24px 0 20px}
+.brand{font-size:22px;font-weight:850;letter-spacing:-.04em}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table td,.table th{padding:10px 8px;text-align:left;border-bottom:1px solid var(--line)}
+.table th{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600}
+.tag.o{background:#f2dac3;color:#8a3d14}.tag.g{background:#d4ead9;color:#1a5c38}.tag.b{background:#d0dfed;color:#1f3c52}.tag.r{background:#f0cfcd;color:#86221b}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.col h3{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px}
+.task{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+.task strong{display:block;font-size:14px}
+.task .sub{font-size:12px;color:var(--muted)}
+.side{display:grid;gap:16px}
+.side .card{font-size:14px}
+.side .card h3{font-size:15px;margin:0 0 8px}
+.btn{display:block;text-align:center;background:var(--ink);color:#fff;text-decoration:none;border-radius:12px;padding:12px;font-weight:700;font-size:15px;margin-top:12px}
+.revlog{margin-top:20px}
+.revlog td:nth-child(2){color:var(--muted)}
+.note{border-left:3px solid var(--orange);padding-left:12px;margin:8px 0;font-size:13px;color:var(--muted)}
+.step-label{font-size:13px;color:var(--muted);padding:12px 0 0}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.cols{grid-template-columns:1fr}.top{flex-direction:column;align-items:flex-start}}
+</style></head><body>
+<div class="banner">This is a demo of what is inside the kit. <a href="../index.html">You buy the editable template files, not a live app.</a></div>
+<div class="shell">
+<div class="top"><div><div class="brand">Your Agency Name</div><div class="step-label">← Replace this name, colors and project list in the HTML file.</div></div><a class="btn" href="../index.html" style="background:var(--muted);display:inline-block;padding:8px 16px;">← Back to kit page</a></div>
+<div class="grid">
+<main>
+<div class="card"><h3 style="margin:0 0 12px;font-size:16px">Client status dashboard</h3><p style="margin:0 0 8px;color:var(--muted);font-size:13px">Edit this file to show each client their projects. Add rows, change names, swap statuses. The kit includes the source HTML.</p>
+<table class="table">
+<tr><th>Video</th><th>Status</th><th>Editor</th><th>Due</th><th>Action needed</th></tr>
+<tr><td>Brand launch reel</td><td><span class="tag o">Awaiting client notes</span></td><td>Sam</td><td>Today</td><td>Client reviewing V2</td></tr>
+<tr><td>Founder talking head</td><td><span class="tag g">V2 ready</span></td><td>Mia</td><td>Jun 8</td><td>2 comments pending</td></tr>
+<tr><td>Podcast clip pack</td><td><span class="tag b">Editing</span></td><td>Sam</td><td>Jun 9</td><td>Waiting for hook variants</td></tr>
+<tr><td>UGC ad batch</td><td><span class="tag r">Blocked</span></td><td>Mia</td><td>—</td><td>Client needs to confirm claims</td></tr>
+<tr><td>Testimonial short</td><td><span class="tag g">Approved ✓</span></td><td>Sam</td><td>Done</td><td>Schedule for Friday</td></tr>
+</table>
+</div>
+
+<div class="card"><h3 style="margin:0 0 8px;font-size:16px">Revision log (part of the kit)</h3>
+<table class="table revlog"><tr><th>Video</th><th>Change</th><th>Round</th></tr>
+<tr><td>Launch reel</td><td>Cut intro by 1.2s, swap caption style</td><td>V1→V2</td></tr>
+<tr><td>Podcast clip</td><td>Add source link for quote</td><td>V1→V2</td></tr>
+<tr><td>UGC batch</td><td>Client must confirm claims before edit</td><td>Blocked</td></tr>
+</table>
+<p class="note">The kit includes revision rules so clients know: two rounds included, new hook = new video.</p>
+</div>
+
+<div class="card">
+<h3 style="margin:0 0 8px;font-size:16px">All emails/messages included</h3>
+<p style="font-size:14px;color:var(--muted)">The kit has 5 ready-to-copy email templates:</p>
+<table class="table"><tr><th>Step</th><th>Template</th></tr>
+<tr><td>1</td><td>Brief request — ask for footage, offer, examples</td></tr>
+<tr><td>2</td><td>V1 delivery — share link, set feedback deadline</td></tr>
+<tr><td>3</td><td>Feedback chase — nudge without annoying</td></tr>
+<tr><td>4</td><td>Final delivery — wrap up, leave context</td></tr>
+<tr><td>5</td><td>Next batch upsell — turn one project into recurring work</td></tr>
+</table>
+</div>
+</main>
+
+<aside class="side">
+<div class="card"><h3>You buy a ZIP, not a login</h3>
+<p>The kit is 6 editable files. Download, unzip, edit in any text editor, host anywhere. No account, no monthly bill, no data stored on a server.</p>
+<a class="btn" href="https://www.paypal.me/M4RVlN">Buy the kit · €49</a>
+</div>
+<div class="card"><h3>What changes after payment</h3>
+<p class="note">If you put your agency name in the PayPal note, I will brand the HTML, set your colors and replace the placeholder project names. You get the customized ZIP within a few hours.</p>
+</div>
+<div class="card"><h3>FAQ quick</h3>
+<p style="font-size:13px"><strong>Can I see the files before paying?</strong> Yes — <a href="https://github.com/MarvinPateau/revisionroom-kit">the GitHub repo is public</a>. The kit is the same files. You can inspect everything.</p>
+<p style="font-size:13px"><strong>Can I get a refund if it does not work?</strong> The kit is a ZIP file you download after payment. It either works or it does not. If the files are corrupted or unreadable, I fix it. But there is no trial and no return policy on templates.</p>
+</div>
+</aside>
+</div></div></body></html>
