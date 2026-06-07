@@ -90,6 +90,14 @@ h1{font-size:clamp(32px,5vw,54px);font-weight:800;line-height:.92;letter-spacing
 .cta-section .price{font-size:clamp(44px,7vw,70px);font-weight:850;letter-spacing:-.06em;margin:4px 0}
 .cta-section .btn-primary{font-size:18px;padding:16px 40px;border-radius:16px}
 
+/* money math */
+.roi-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;margin:36px 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.roi-item{text-align:center}
+.roi-item .big{font-size:28px;font-weight:800;letter-spacing:-.04em;color:var(--ink)}
+.roi-item .label{font-size:13px;color:var(--ink-75);margin-top:4px}
+.roi-item .sub{font-size:11px;color:var(--ink-50);margin-top:2px}
+.roi-divider{width:1px;background:var(--line);align-self:stretch}
+
 footer{color:var(--ink-50);font-size:13px;text-align:center;padding:28px 0;border-top:1px solid var(--line)}
 
 @media(max-width:800px){
@@ -169,6 +177,15 @@ footer{color:var(--ink-50);font-size:13px;text-align:center;padding:28px 0;borde
     <div class="email-item"><span class="num">04</span><span><strong>Final delivery</strong> — "Final export here. Context notes saved in the portal for next batch."</span></div>
     <div class="email-item"><span class="num">05</span><span><strong>Next batch upsell</strong> — "Ready for the next batch? Same turnaround, same quality."</span></div>
   </div>
+
+  <!-- money math -->
+  <div class="roi-box">
+    <div class="roi-item"><div class="big">2-3h</div><div class="label">Lost per revision round</div><div class="sub">Chasing notes across email, WhatsApp and Slack</div></div>
+    <div class="roi-divider"></div>
+    <div class="roi-item"><div class="big">€75-150</div><div class="label">Unbilled cost per round</div><div class="sub">At your standard rate, every round you can't bill</div></div>
+    <div class="roi-divider"></div>
+    <div class="roi-item"><div class="big">€49</div><div class="label">Kit cost</div><div class="sub">Recouped on the FIRST project that would have needed three rounds</div></div>
+  </div>
 </section>
 
 <section class="steps-section" id="how"><div class="wrap">
@@ -188,7 +205,7 @@ footer{color:var(--ink-50);font-size:13px;text-align:center;padding:28px 0;borde
     <a href="https://www.paypal.me/M4RVlN" class="btn btn-primary">Buy RevisionRoom · €49</a>
     <a href="https://github.com/MarvinPateau/revisionroom-kit" class="btn btn-secondary" target="_blank">Browse the full source on GitHub →</a>
   </div>
-  <p style="font-size:13px;color:var(--ink-50);margin-top:16px">Questions? <a href="../contact.html" style="color:var(--ink)">Open an issue on GitHub</a> — I answer within 24h.</p>
+  <p style="font-size:13px;color:var(--ink-50);margin-top:16px">Questions before buying? <a href="https://github.com/MarvinPateau/revisionroom-kit/issues/new" style="color:var(--ink);text-decoration:underline">Open an issue on GitHub</a> — I answer within hours. 🔒 7-day no-questions refund.</p>
 </section>
 
 <!-- sticky bottom CTA -->
